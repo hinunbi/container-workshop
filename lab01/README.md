@@ -36,12 +36,12 @@ root $ gedit /etc/hosts
 ```bash
 root $ gedit /etc/yum.repo.d/utils.repo
 ```
-/etc/yum.repos.d/utils.repo
+/etc/yum.repos.d/utils.repo : 
 
 ```
  [utils-repo]
- name=rhel-7-server-utils
- baseurl=http://10.64.168.10/repos/rhel-7-all/rhel-7-server-3scale-amp-2.0-rpms/
+ name=rhel-7-utils
+ baseurl=http://jcha-osx.local:8000/
  enabled=1
  gpgcheck=0
 ```
@@ -85,6 +85,14 @@ root $ gedit /etc/sudoers
 아래 명령을 실행하면 에디터를 이용하지 않고 수정할 수 있습니다.
 ```bash 
 root $ sed -i 's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+NOPASSWD:\s\+ALL\)/\1/' /etc/sudoers
+```
+
+## 유틸리티 설치
+
+원할한 실습 진행을 위해 몇몇 유틸리티를 설치합니다
+
+```bash
+root $ yum install -y wget bash-completion 
 ```
 
 
