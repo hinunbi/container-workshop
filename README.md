@@ -8,7 +8,7 @@
    * DevOps 개발자
    * 애플리케이션 개발자 
 
-## 실습 하드웨어 
+## 실습 환경 
 
    * Red Hat Enterprise Linux 7.3 
  
