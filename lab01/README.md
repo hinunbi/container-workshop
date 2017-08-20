@@ -2,12 +2,14 @@ Lab one - 사전 준비
 ===
 
 이 워크샵은 전체 실습을 위한 사전 준비 환경을 안내합니다. 
-반드시 인용된 실행 명령에서 프롬프트 앞에 *표시된 계정* 으로 명령을 실행합니다  
+
+* 이 문서는 Red Hat Enterprise Linux 7.3 을 기반으로 작성됐습니다.
+* 반드시 명령 실행은 프롬프트 앞에 *표시된 계정* 으로 명령을 실행합니다.  
 
 ## 호스트 이름 설정
 
 실습 시스템의 호스트 이름 **student** 뒤에 실습 참석자의 번호를 입력합니다. 
-아래 예에서는 01 을 추가했습니다. 실습 참석자는 각자에게 수여된 번호를 입력합니다
+아래 예에서는 01 을 추가했습니다. 실습 참석자는 각자에게 부여된 번호를 입력합니다
 
 ```bash
 root $ gedit /etc/hostname
@@ -26,6 +28,24 @@ root $ gedit /etc/hosts
 192.168.181.61 student01
 ...
 ```
+
+## yum 저장소 등록
+
+실습에서 사용할 yum 경로를 추가합니다. 
+
+```bash
+root $ gedit /etc/yum.repo.d/utils.repo
+```
+/etc/yum.repos.d/utils.repo
+
+```
+ [utils-repo]
+ name=rhel-7-server-utils
+ baseurl=http://10.64.168.10/repos/rhel-7-all/rhel-7-server-3scale-amp-2.0-rpms/
+ enabled=1
+ gpgcheck=0
+```
+
 
 ## 전역 환경변수 설정
 
