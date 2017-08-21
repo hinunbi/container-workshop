@@ -60,19 +60,37 @@ hello-world         latest              1815c82652c0        9 weeks ago         
 
 ## Cats Docker 컨테이너 실행
 
-### Docker run 를 이용한 실행
+### Docker run 을 이용한 실행
+
+Docker 명령을 이용해 컨테이너 이미지를 실행하는 방법입니다. 
+
 ```
 root $ su - student
 student $ cd ~/container-workshop/lab04
-student $ HOST_IP=$(hostname --ip-address) docker-compose -p cats -f cats-compose.yml up
+student $ docker run --name docker-cats -d -p 8080:8080 \
+          -e ACTIVEMQ_SERVICE_HOST=jcha-OSX.local \
+          -e ACTIVEMQ_SERVICE_PORT=61616 \
+          -e MYSQL_SERVICE_HOST=$(hostname --ip-address) \
+          -e MYSQL_SERVICE_PORT=3306 \
+          cats
+          
+student $ docker ps          
+student $ docker logs -f docker-cats
+```
+Docker 명령을 이용한 컨테이너 실행 종료 방법입니다. 
+
+```
+student $ docker rm -v docker-cats
 ```
 
+### Docker Compose 를 이용한 실행
 
-Docker Compose 를 이용한 실행
+Docker Compse 명령을 이용해 컨테이너 이미지를 실행하는 방법입니다.
 ```
 root $ su - student
 student $ cd ~/container-workshop/lab04
-student $ HOST_IP=$(hostname --ip-address) docker-compose -p cats -f cats-compose.yml up
+student $ export HOST_IP=$(hostname --ip-address) && \
+          docker-compose -p cats -f cats-compose.yml up
 ```
 
 cats-compose.yml : 
@@ -90,4 +108,18 @@ services:
       MYSQL_SERVICE_HOST: ${HOST_IP}
       MYSQL_SERVICE_PORT: 3306
 ```
-  
+
+Docker Compse 이용한 컨테이너 실행 종료 방법입니다. 
+```
+root $ su - student
+student $ cd ~/container-workshop/lab04
+student $ export HOST_IP=$(hostname --ip-address) && \
+          docker-compose -p cats -f cats-compose.yml down
+```
+
+## Cats Dockre 컨테이너 애플리케이션 웹 페이지 조회
+
+```
+root $ su - student
+student $ firefox http://localhost:8080 &
+```  
