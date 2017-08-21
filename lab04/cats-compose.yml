@@ -1,0 +1,10 @@
+docker-cats:
+  image: cats
+  container_name: docker-cats
+  ports:
+    - "8080:8080"
+  environment:
+    ACTIVEMQ_SERVICE_HOST: "jcha-OSX.local"
+    ACTIVEMQ_SERVICE_PORT: 61616
+    MYSQL_SERVICE_HOST: "localhost"
+    MYSQL_SERVICE_PORT: 3306
