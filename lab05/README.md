@@ -1,4 +1,4 @@
-Lab 05 - Kubernetes 설치 및 Pod 실행
+Lab 05 - Kubernetes 설치
 ===
 
 * 이 문서는 Red Hat Enterprise Linux 7.3 을 기반으로 작성됐습니다.
@@ -42,7 +42,7 @@ root $ chmod +x ./kubectl
 root $ kubectl version
 ```
 
-## kubelet 설치, 패치, 실행
+## kubelet 설치, 실행
 
 kubelet은 각 노드에서 실행되는 기본 "노드 에이전트"입니다.
 
@@ -64,8 +64,8 @@ root $ yum install -y kubeadm
 
 ## kubeadm 최초 실행
 
-kubeadm init 을 최초로 실행하면 아래와 같은 오류를 발생시킵니다. 
-이 오류를 해결하기 위해서는 kubeadm 설정 파일의 패치가 필요합니다.
+kubeadm init 은 최초로 실행하면 아래와 같은 오류를 발생시킵니다. 
+이 오류를 해결하기 위해서는 kubeadm 설정 파일의 수정이 필요합니다.
 
 ```
 root $ setenforce 0
@@ -83,9 +83,8 @@ root $ kubeadm init
 
 ```
 
-
-### kubeadm 설정 파일 패치
-kubeadm 최토 실행 후 아래와 같이 kubeadm 설정 파일에서 **--cgroup-driver=cgroupfs** 로 패치합니다.
+### kubeadm 설정 파일 수정
+kubeadm 최토 실행 후 아래와 같이 kubeadm 설정 파일에서 **--cgroup-driver=cgroupfs** 로 오류를 수정합니다.
 
 이슈 참조) [https://github.com/kubernetes/kubernetes/issues/43805](https://github.com/kubernetes/kubernetes/issues/43805)
 
@@ -100,7 +99,7 @@ root $ gedit /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 Environment="KUBELET_CGROUP_ARGS=--cgroup-driver=systemd"
 ...
 ```
-수정된 10-kubeadm.conf : 
+오류가 수정된 10-kubeadm.conf : 
 
 
 
@@ -115,8 +114,8 @@ Environment="KUBELET_CGROUP_ARGS=--cgroup-driver=cgroupfs"
 
 
 ```
-root $ setenforce 0
 root $ systemctl daemon-reload
+root $ setenforce 0
 root $ kubeadm reset
 root $ kubeadm init
 
@@ -165,7 +164,7 @@ root $ kubeadm init
 ```
 
 
-## Kubernetes 클러스터 접속 설정
+## student 계정의 Kubernetes 클러스터 접속 설정
 ```
 root $ su - student
 student $ mkdir -p $HOME/.kube
@@ -180,9 +179,9 @@ Kubernetes 네트워크를 설치합니다.
 Kubernetes 네트워크를 설치하면 node 정보를 조회할 수 있게 됩니다.
 그러나 아직 로컬 시스템이 애플리케이션 실행 가능 노드로 전환되지 않았습니다 
 ```
-root $ export kubever=$(kubectl version | base64 | tr -d '\n')
-root $ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"
-root $ kubectl get node
+student $ export kubever=$(kubectl version | base64 | tr -d '\n')
+student $ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"
+student $ kubectl get node
 NAME      STATUS     AGE       VERSION
 teacher   NotReady   6m        v1.7.3
 ```
@@ -190,8 +189,10 @@ teacher   NotReady   6m        v1.7.3
 ## Kubernetes 로컬 시스템 애플리케이션 실행 노드로 전환
 아래 명령을 실행해 로컬 시스템이 Kubernetes 파드 실행 노드가 되게 전환합니다. 
 ```
-root $ kubectl taint nodes --all node-role.kubernetes.io/master-
-root $ kubectl get nodes
+student $ kubectl taint nodes --all node-role.kubernetes.io/master-
+student $ kubectl get nodes
 NAME      STATUS    AGE       VERSION
 teacher   Ready     8m        v1.7.3
+
+root $ docker ps 
 ```
