@@ -35,7 +35,7 @@ Red Hat Container Workshop
 이 실습에서 사용하는 애플리케이션은 실시간으로 고양이 이미지 트윗을 
 화면에 표시하는 애플리케이션 화면입니다.
 
-![00-container-workshop-total.png](./img/00-container-workshop-total.png)
+![01-container-workshop-cats.png](./img/01-container-workshop-cats.png)
 
 
 

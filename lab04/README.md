@@ -69,15 +69,17 @@ student $ HOST_IP=$(hostname --ip-address) docker-compose -f cats-compose.yml up
 
 cats-compose.yml : 
 ```
-docker-cats:
-  image: cats
-  container_name: docker-cats
-  ports:
-    - "8080:8080"
-  environment:
-    ACTIVEMQ_SERVICE_HOST: "jcha-OSX.local"
-    ACTIVEMQ_SERVICE_PORT: 61616
-    MYSQL_SERVICE_HOST: "localhost"
-    MYSQL_SERVICE_PORT: 3306
+version: '2'
+services:
+  docker-cats:
+    image: cats
+    container_name: docker-cats
+    ports:
+      - "8080:8080"
+    environment:
+      ACTIVEMQ_SERVICE_HOST: "jcha-OSX.local"
+      ACTIVEMQ_SERVICE_PORT: 61616
+      MYSQL_SERVICE_HOST: ${HOST_IP}
+      MYSQL_SERVICE_PORT: 3306
 ```
   
