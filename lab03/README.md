@@ -42,6 +42,15 @@ root $ systemctl restart docker
 ```bash
 root $ su - student
 student $ docker version
+
+
+```
+ 
+## Docker 컨테이너 실행
+
+```bash
+root $ su - student
+student $ docker version
 student $ docker run hello-world
 
 Unable to find image 'hello-world:latest' locally
@@ -71,12 +80,4 @@ For more examples and ideas, visit:
  https://docs.docker.com/engine/userguide/
 
 ```
- 
-## MySQL Docker 컨테이너 실행
-
-```bash
-root $ su - student
-student $ docker version
-student $ docker run hello-world
-
   
