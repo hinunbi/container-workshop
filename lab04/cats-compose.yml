@@ -8,5 +8,5 @@ services:
     environment:
       ACTIVEMQ_SERVICE_HOST: "jcha-OSX.local"
       ACTIVEMQ_SERVICE_PORT: 61616
-      MYSQL_SERVICE_HOST: "localhost"
+      MYSQL_SERVICE_HOST: "teacher"
       MYSQL_SERVICE_PORT: 3306
