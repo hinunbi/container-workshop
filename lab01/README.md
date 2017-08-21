@@ -9,7 +9,9 @@ Lab one - 사전 준비
 ## 호스트 이름 설정
 
 실습 시스템의 호스트 이름 **student** 뒤에 실습 참석자의 번호를 입력합니다. 
-아래 예에서는 01 을 추가했습니다. 실습 참석자는 각자에게 부여된 번호를 입력합니다
+아래 예에서는 01 을 추가했습니다. 
+실습 참석자는 각자에게 부여된 번호를 입력합니다.
+DHCP로 할당된 경우도 
 
 ```bash
 root $ gedit /etc/hostname
@@ -18,11 +20,11 @@ root $ gedit /etc/hostname
 ```
 studentend01
 ```
-
+hosts 파일에 실습 참석자 호스트 IP와 호스트 이름을 추가합니다
 ```bash
 root $ gedit /etc/hosts
 ```
-/etc/hosts : 
+/etc/hosts :
 ```bash
 ...
 192.168.181.61 student01
@@ -44,15 +46,6 @@ name=rhel-7-utils
 baseurl=http://jcha-osx.local:8000/
 enabled=1
 gpgcheck=0
-```
-
-
-## 전역 환경변수 설정
-
-/etc/profile 에 실습에서 사용할 경로를 추가합니다.
-
-```bash
- root $ sh -c 'echo -e "export PATH=$PATH:/usr/local/bin" >> /etc/profile' 
 ```
 
 ## 실습 사용자 생성
