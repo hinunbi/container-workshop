@@ -64,7 +64,7 @@ hello-world         latest              1815c82652c0        9 weeks ago         
 ```
 root $ su - student
 student $ cd ~/container-workshop/lab04
-student $ docker-compose -f cats-compose.yml up
+student $ HOST_IP=$(hostname --ip-address) docker-compose -f cats-compose.yml up
 ```
 
 cats-compose.yml : 
