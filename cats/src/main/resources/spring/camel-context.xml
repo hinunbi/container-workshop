@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://camel.apache.org/schema/spring       http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	<bean id="webSocketProcess" class="com.redhat.cats.process.WebSocketProcess" />
+	<bean id="repositoryProcess" class="com.redhat.cats.process.RepositoryProcess" />
+
+	<bean id="inspectProcessor" class="com.redhat.process.InspectProcessor" />
+
+	<camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+		<dataFormats>
+			<json id="tweet" library="Jackson" unmarshalTypeName="com.redhat.cats.model.Tweet" />
+		</dataFormats>
+		<route id="tweetRoute">
+			<from uri="amq:topic:cats.data?jmsMessageType=Text&amp;concurrentConsumers=1" />
+			<wireTap uri="direct:streamLogger" />
+			<bean ref="webSocketProcess" method="trigger" />
+			<unmarshal ref="tweet" />
+			<to uri="jpa:com.redhat.cats.model.Tweet" />
+		</route>
+
+		<route id="tweetLogRoute">
+			<from uri="direct:streamLogger" />
+			<transform>
+				<simple>=> ${body}</simple>
+			</transform>
+			<to uri="stream:out" />
+		</route>
+
+		<route id="tweetStatusRoute">
+			<from uri="timer://countChecker?period=10s" />
+			<process ref="repositoryProcess" />
+			<transform>
+				<simple>=> total : ${header.total}, speed : ${header.speed} at ${date:now:HH시 mm분 ss초}</simple>
+			</transform>
+			<to uri="stream:out" />
+		</route>
+	</camelContext>
+</beans>

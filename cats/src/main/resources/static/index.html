@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>고양이를 보여줘</title>
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<script type="text/javascript"
+	src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script type="text/javascript"
+	src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<style type="text/css">
+.container {
+	max-width: none !important;
+	width: 970px;
+}
+
+.spacer {
+	margin-top: 16px;
+}
+
+.img-thumbnail {
+	min-height: 132px;
+	height: 132px;
+}
+
+.current-image {
+	border: 1px solid #2c9fd6;
+}
+</style>
+</head>
+<body>
+
+	<div class="container">
+		<div class="row spacer">
+			<div class="col-xs-8">
+				<div class="page-header">
+					<h1>고양이를 보여줘</h1>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-8">
+				<span class="badge badge-info">트위터에서 고양이(cat)로 이미지를 실시간 검색
+					중입니다...</span>
+			</div>
+		</div>
+		<div class="row spacer">
+			<div class="col-xs-8">
+				<p class="text-success">
+					<span id="tweetCount">0</span> 건의 트윗에서 <span id="imageCount">0</span>
+					개의 이미지를 찾았습니다.
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-8">
+				<form role="form">
+					<div class="form-group">
+						<textarea id="messages" class="form-control"
+							style="resize: none; background-color: #d3d3d3; color: cornflowerblue"
+							rows="2" readonly></textarea>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div class="row">
+			<div id="1" class="col-xs-2">
+				<a href="#"> <img class="img-thumbnail"
+					src="http://placehold.it/124x124/000000&text=+" />
+				</a>
+			</div>
+			<div id="2" class="col-xs-2">
+				<a href="#"> <img class="img-thumbnail"
+					src="http://placehold.it/124x124/000000&text=+" />
+				</a>
+			</div>
+			<div id="3" class="col-xs-2">
+				<a href="#"> <img class="img-thumbnail"
+					src="http://placehold.it/124x124/000000&text=+" />
+				</a>
+			</div>
+			<div id="4" class="col-xs-2">
+				<a href="#"> <img class="img-thumbnail"
+					src="http://placehold.it/124x124/000000&text=+" />
+				</a>
+			</div>
+		</div>
+		<div class="row spacer">
+			<div id="5" class="col-xs-2">
+				<a href="#"> <img class="img-thumbnail"
+					src="http://placehold.it/124x124/000000&text=+" />
+				</a>
+			</div>
+			<div id="6" class="col-xs-2">
+				<a href="#"> <img class="img-thumbnail"
+					src="http://placehold.it/124x124/000000&text=+" />
+				</a>
+			</div>
+			<div id="7" class="col-xs-2">
+				<a href="#"> <img class="img-thumbnail"
+					src="http://placehold.it/124x124/000000&text=+" />
+				</a>
+			</div>
+			<div id="8" class="col-xs-2">
+				<a href="#"> <img class="img-thumbnail"
+					src="http://placehold.it/124x124/000000&text=+" />
+				</a>
+			</div>
+		</div>
+		<div class="row spacer">
+			<div id="9" class="col-xs-2">
+				<a href="#"> <img class="img-thumbnail"
+					src="http://placehold.it/124x124/000000&text=+" />
+				</a>
+			</div>
+			<div id="10" class="col-xs-2">
+				<a href="#"> <img class="img-thumbnail"
+					src="http://placehold.it/124x124/000000&text=+" />
+				</a>
+			</div>
+			<div id="11" class="col-xs-2">
+				<a href="#"> <img class="img-thumbnail"
+					src="http://placehold.it/124x124/000000&text=+" />
+				</a>
+			</div>
+			<div id="12" class="col-xs-2">
+				<a href="#"> <img class="img-thumbnail"
+					src="http://placehold.it/124x124/000000&text=+" />
+				</a>
+			</div>
+		</div>
+
+		<footer>
+			<div class="row spacer">
+				<div class="col-xs-8">
+					<p>
+						Created by <a href="http://www.barunmo.com" target="_blank">Red
+							Hat</a>. <br /> Powered by <a href="http://camel.apache.org/"
+							target="_blank">JBoss Fuse</a>, <a
+							href="http://getbootstrap.com/" target="_blank">Bootstrap</a>, <a
+							href="https://www.docker.com/" target="_blank">Docker</a>, <a
+							href="https://kubernetes.io/" target="_blank">Kubernetes</a>, ,
+						and <a href="https://www.openshift.com/" target="_blank">Red
+							Hat OpenShift</a>. <br /> Inspired by <a
+							href="http://www.ofbizian.com/2012/10/live-photo-streaming-from-twitter.html"
+							target="_blank">Bilgin Ibryam's Blog.</a>
+					</p>
+
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<script type="text/javascript">
+	
+	function numberWithCommas(x) { 
+		var parts = x.toString().split(".");
+		parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		return parts.join(".");
+	}
+
+	var index = 0;
+
+	function updateImage(tweet) {
+		var localIndex = 1;
+		if (index >= 12) {
+			index = 1;
+		} else {
+			index++;
+			localIndex = index;
+		}
+		$("#messages").text(tweet.text);
+		var imageUrl = tweet.url + ':thumb';
+		// console.log("imageUrl : " + imageUrl);
+		var image = $('<img />')
+				.load(function () {
+					$('.img-thumbnail').removeClass('current-image');
+					$('#' + localIndex).html(
+							'<a title="@' + tweet.name + ':' + tweet.text + '" target="_blank" href="' + tweet.url + '">' +
+
+									'<img class="img-thumbnail" src="' + imageUrl + '" />' +
+
+									'</a>');
+					$('#' + localIndex + ' a img').addClass('current-image');
+				})
+				.error(function () {
+					// console.log("error loading " + imageUrl);
+				})
+				.attr('src', imageUrl);
+	}
+
+	function setTimeInfo(tweet) {
+		 	$('#now').text(tweet.now);
+			$('#upTime').text(tweet.upTime);
+	}
+		
+ function setStats(tweet) {
+		 	$('#tweetCount').text(numberWithCommas(tweet.tweetCount));
+			$('#imageCount').text(numberWithCommas(tweet.imageCount));
+	}
+		
+	function gallery(data) {
+		var tweet = jQuery.parseJSON(data);
+		setTimeInfo(tweet);
+		setStats(tweet);
+		updateImage(tweet);
+	}
+
+	$(document).ready(function () {
+
+		var dataChannel = "/topic/cats.data";
+		var sessionId;
+
+		if (!window.WebSocket) {
+			alert("웹소켓을 사용할 수 없습니다. 웹소켓은 인터넷 익스플로러 10, 파이어폭스 7, 크롬 4 부터 지원합니다.");
+		}
+		var socket = new SockJS('/websocket');
+		var client = Stomp.over(socket);
+
+		client.debug = function (str) {
+			console.log(str);
+		};
+
+
+		var onconnect = function (frame) {
+			// client.debug("connected to Stomp : " + frame);
+			sessionId = frame.headers.session;
+			client.debug("Session ID : " + sessionId);
+
+			var subscribeHeader = {};
+			client.subscribe(dataChannel,
+					function (message) {
+						// client.debug("message : " + message.body);
+						gallery(message.body);
+					},
+					subscribeHeader
+			);
+		}
+
+		client.onerror = function (frame) {
+			client.debug("error : " + frame.headers['message']);
+		}
+
+		client.ondisconnect = function () {
+			client.debug("disconnected from Stomp");
+		};
+
+		client.connect({}, onconnect);
+
+		$('#disconnect').click(function () {
+			client.disconnect(function () {
+				$("#messages").html("");
+			});
+			return false;
+		});
+	});
+</script>
+</body>
+</html>
+
+
+
