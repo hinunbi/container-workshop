@@ -6,94 +6,51 @@ Lab two - 애플리케이션 개발, 빌드, 실행
 * 이 문서는 Red Hat Enterprise Linux 7.3 을 기반으로 작성됐습니다.
 * 반드시 명령 실행은 프롬프트 앞에 *표시된 계정* 으로 명령을 실행합니다.  
 
-## 호스트 이름 설정
 
-실습 시스템의 호스트 이름 **student** 뒤에 실습 참석자의 번호를 입력합니다. 
-아래 예에서는 01 을 추가했습니다. 실습 참석자는 각자에게 부여된 번호를 입력합니다
-
-```bash
-root $ gedit /etc/hostname
-```
-/etc/hostname : 
-```
-studentend01
-```
+## 개발 도구 설치
+   
+   이미 설치되어 있지 않은 경우, Open JDK 를 설치합니다.
 
 ```bash
-root $ gedit /etc/hosts
+root $ sudo yum install -y java-1.8.0-openjdk-devel
+root $ sudo yum install -y java-1.8.0-openjdk-devel  --downloadonly --downloaddir=/var/www/html/repo
+root $ java -version
 ```
-/etc/hosts : 
+   
+   Maven 개발 도구를 설치하고 환경 변수를 등록 합니다.
 ```bash
-...
-192.168.181.61 student01
-...
-```
+root $ cd /opt
+root $ sudo wget http://mirror.apache-kr.org/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz
+root $ sudo tar xzf apache-maven-3.5.0-bin.tar.gz
+root $ sudo ln -s apache-maven-3.5.0 maven
+root $ sudo sh -c 'echo -e "export M2_HOME=/opt/maven\nexport PATH=/opt/maven/bin:${PATH}\n" > /etc/profile.d/maven.sh' 
+root $ source /etc/profile.d/maven.sh
+root $ sudo rm -rf apache-maven-3.5.0-bin.tar.gz
+root $ mvn -version
+```   
 
-## yum 저장소 등록
-
-실습에서 사용할 yum 경로를 추가합니다. 
-
+## 사용자 계정 전환
+   
+   애플리케이션 개발 빌드, 실행은 개발자 계정으로 수행합니다. 
+   그러므로 개발자 계정으로 사용자 계정을 전환합니다
 ```bash
-root $ gedit /etc/yum.repo.d/utils.repo
-```
-/etc/yum.repos.d/utils.repo : 
+root $ su - student 
+student $
+```   
 
-```
- [utils-repo]
- name=rhel-7-utils
- baseurl=http://jcha-osx.local:8000/
- enabled=1
- gpgcheck=0
-```
-
-
-## 전역 환경변수 설정
-
-/etc/profile 에 실습에서 사용할 경로를 추가합니다.
+## 애플리케이션 복제
 
 ```bash
- root $ sh -c 'echo -e "export PATH=$PATH:/usr/local/bin" >> /etc/profile' 
+student $ cd ~
+student $ git clone https://github.com/hinunbi/container-workshop.git
+student $ cd container-workshop
 ```
 
-## 실습 사용자 생성
-
-root 계정으로 워크샵 실습 사용자 계정 **student** 을 생성합니다. 
-워크샵에서 사용하는 사용자 패스워드는 **student** 입니다.
+## 애플리케이션 빌드
 
 ```bash
-root $ useradd -m -s /bin/bash student
-root $ echo 'student:student' | chpasswd
-root $ usermod -aG wheel student
-``` 
-
-## 실습 사용자 sudo 사용 설정
-실습 사용자 student 계정이 패스워드 없이 sudo 를 사용할 수 있게 설정합니다.
-
-
-```bash
-root $ gedit /etc/sudoers
+student $ cd ~/container-workshop/cats
+student $ mvn package
+student $ ls -al target/*.jar
 ```
-
-/etc/sudoers :
-
-```
-..
-## Allows people in group wheel to run all commands
-%wheel  ALL=(ALL)       NOPASSWD: ALL
-...
-```
-아래 명령을 실행하면 에디터를 이용하지 않고 수정할 수 있습니다.
-```bash 
-root $ sed -i 's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+NOPASSWD:\s\+ALL\)/\1/' /etc/sudoers
-```
-
-## 유틸리티 설치
-
-원할한 실습 진행을 위해 몇몇 유틸리티를 설치합니다
-
-```bash
-root $ yum install -y wget bash-completion 
-```
-
-
  
