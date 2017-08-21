@@ -8,7 +8,6 @@ Lab three - Docker 설치 및 컨테이너 실행
 
 
 ## Docker 설치 및 설정
-student 계정으로 워크샵에서 사용할 docker 를 설치합니다.
 
 ```bash
 root $ rpm --import "https://sks-keyservers.net/pks/lookup?op=get&search=0xee6d536cf7dc86e2d7d56f59a178ac6c6238f52e"
@@ -18,6 +17,15 @@ root $ yum install -y docker-engine --downloaddir=/var/www/html/repo
 root $ systemctl start docker
 root $ systemctl enable docker
 root $ docker version
+```
+
+## Docker Compose 설치 및 설정
+
+Compose는 Docker 컨테이너 애플리케이션들을 정의하고 실행하기 위한 도구입니다.
+```bash
+root $ curl -L https://github.com/docker/compose/releases/download/1.14.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+root $ chmod +x /usr/local/bin/docker-compose
+root $ docker-compose version
 ```
 
 ## 사용자 계정 Docker 명령 사용 설정
