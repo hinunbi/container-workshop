@@ -40,7 +40,7 @@ student $ docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES 
 ```
  
-## Cats Docker 이미지 생성
+## Cats Docker 이미지 빌드
 
 lab02에서 생성한 cats-1.0.jar 패키지를 Docker 이미지로 빌드합니다.
 
