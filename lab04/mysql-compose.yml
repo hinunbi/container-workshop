@@ -1,10 +1,13 @@
-docker-mysql:
-  image: mysql
-  container_name: docker-mysql
-  ports:
-    - "3306:3306"
-  environment:
-    MYSQL_DATABASE: "cats"
-    MYSQL_USER: "cat"
-    MYSQL_PASSWORD: "meow"
-    MYSQL_ROOT_PASSWORD: "mysql"
+version: '3'
+services:
+  docker-mysql:
+    image: mysql
+    container_name: docker-mysql
+    restart: on-failure
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: "cats"
+      MYSQL_USER: "cat"
+      MYSQL_PASSWORD: "meow"
+      MYSQL_ROOT_PASSWORD: "mysql"

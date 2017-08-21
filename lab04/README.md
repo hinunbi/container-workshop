@@ -32,7 +32,7 @@ docker-mysql:
 
 ## MySQL Docker 컨테이너 종료
 
-```bash
+```
 root $ su - student
 student $ cd ~/container-workshop/lab04
 student $ docker-compose -f mysql-compose.yml down
@@ -44,7 +44,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 lab02에서 생성한 cats-1.0.jar 패키지를 Docker 이미지로 빌드합니다.
 
-```bash
+```
 root $ su - student
 student $ cd ~/container-workshop/lab04
 student $ cp ~/container-workshop/cats/target/cats-1.0.jar .
@@ -52,7 +52,7 @@ student $ docker build -t cats .
 student $ docker images
 
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-docker-cats         latest              15546c8440c6        30 minutes ago      250.6 MB
+cats                latest              15546c8440c6        30 minutes ago      250.6 MB
 openjdk             8-jre-slim          9799b08757cc        3 weeks ago         206.5 MB
 mysql               latest              c73c7527c03a        3 weeks ago         412.3 MB
 hello-world         latest              1815c82652c0        9 weeks ago         1.84 kB
@@ -61,11 +61,10 @@ hello-world         latest              1815c82652c0        9 weeks ago         
 ## Cats Docker 컨테이너 실행
 
 
-```bash
+```
 root $ su - student
 student $ cd ~/container-workshop/lab04
-student $ cp ~/container-workshop/cats/target/cats-1.0.jar .
-student $ docker build -t cats .
+student $ docker-compose -f cats-compose.yml up
 ```
 
 cats-compose.yml : 
