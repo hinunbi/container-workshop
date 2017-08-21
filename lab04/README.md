@@ -7,7 +7,7 @@ Lab four - Docker 환경에서 컨테이너 이미지 빌드와 실행
 
 ## MySQL Docker 컨테이너 실행
 
-```bash
+```
 root $ su - student
 student $ cd ~/container-workshop/lab04
 student $ docker-compose -p myslq -f mysql-compose.yml up -d
