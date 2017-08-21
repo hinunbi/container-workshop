@@ -107,7 +107,7 @@ Environment="KUBELET_CGROUP_ARGS=--cgroup-driver=systemd"
 /etc/systemd/system/kubelet.service.d/10-kubeadm.conf : 
 ```
 ...
-Environment="KUBELET_CGROUP_ARGS==--cgroup-driver=cgroupfs"
+Environment="KUBELET_CGROUP_ARGS=--cgroup-driver=cgroupfs"
 ...
 ```
 
@@ -120,14 +120,78 @@ root $ systemctl daemon-reload
 root $ kubeadm reset
 root $ kubeadm init
 
-[kubeadm] WARNING: kubeadm is in beta, please do not use it for production clusters.
-[init] Using Kubernetes version: v1.7.4
-[init] Using Authorization modes: [Node RBAC]
-[preflight] Running pre-flight checks
-[preflight] WARNING: firewalld is active, please ensure ports [6443 10250] are open or your cluster may not function correctly
-[preflight] Some fatal errors occurred:
-        Port 10250 is in use
-        /var/lib/kubelet is not empty
-[preflight] If you know what you are doing, you can skip pre-flight checks with `--skip-preflight-checks`
+[[kubeadm] WARNING: kubeadm is in beta, please do not use it for production clusters.
+ [init] Using Kubernetes version: v1.7.4
+ [init] Using Authorization modes: [Node RBAC]
+ [preflight] Running pre-flight checks
+ [preflight] WARNING: firewalld is active, please ensure ports [6443 10250] are open or your cluster may not function correctly
+ [preflight] Starting the kubelet service
+ [kubeadm] WARNING: starting in 1.8, tokens expire after 24 hours by default (if you require a non-expiring token use --token-ttl 0)
+ [certificates] Generated CA certificate and key.
+ [certificates] Generated API server certificate and key.
+ [certificates] API Server serving cert is signed for DNS names [teacher kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local] and IPs [10.96.0.1 192.168.181.62]
+ [certificates] Generated API server kubelet client certificate and key.
+ [certificates] Generated service account token signing key and public key.
+ [certificates] Generated front-proxy CA certificate and key.
+ [certificates] Generated front-proxy client certificate and key.
+ [certificates] Valid certificates and keys now exist in "/etc/kubernetes/pki"
+ [kubeconfig] Wrote KubeConfig file to disk: "/etc/kubernetes/kubelet.conf"
+ [kubeconfig] Wrote KubeConfig file to disk: "/etc/kubernetes/controller-manager.conf"
+ [kubeconfig] Wrote KubeConfig file to disk: "/etc/kubernetes/scheduler.conf"
+ [kubeconfig] Wrote KubeConfig file to disk: "/etc/kubernetes/admin.conf"
+ [apiclient] Created API client, waiting for the control plane to become ready
+ [apiclient] All control plane components are healthy after 29.000947 seconds
+ [token] Using token: e10759.5e9336f1a93d2a0b
+ [apiconfig] Created RBAC rules
+ [addons] Applied essential addon: kube-proxy
+ [addons] Applied essential addon: kube-dns
+ 
+ Your Kubernetes master has initialized successfully!
+ 
+ To start using your cluster, you need to run (as a regular user):
+ 
+   mkdir -p $HOME/.kube
+   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   sudo chown $(id -u):$(id -g) $HOME/.kube/config
+ 
+ You should now deploy a pod network to the cluster.
+ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+   http://kubernetes.io/docs/admin/addons/
+ 
+ You can now join any number of machines by running the following on each node
+ as root:
+ 
+   kubeadm join --token e10759.5e9336f1a93d2a0b 192.168.181.62:6443
+```
 
+
+## Kubernetes 클러스터 접속 설정
+```
+root $ su - student
+student $ mkdir -p $HOME/.kube
+student $ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+student $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+```
+
+## Kubernetes weave net 설치
+
+Kubernetes 네트워크를 설치합니다. 
+Kubernetes 네트워크를 설치하면 node 정보를 조회할 수 있게 됩니다.
+그러나 아직 로컬 시스템이 애플리케이션 실행 가능 노드로 전환되지 않았습니다 
+```
+root $ export kubever=$(kubectl version | base64 | tr -d '\n')
+root $ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"
+root $ kubectl get node
+NAME      STATUS     AGE       VERSION
+teacher   NotReady   6m        v1.7.3
+```
+
+## Kubernetes 로컬 시스템 애플리케이션 실행 노드로 전환
+아래 명령을 실행해 로컬 시스템이 Kubernetes 파드 실행 노드가 되게 전환합니다. 
+```
+root $ kubectl taint nodes --all node-role.kubernetes.io/master-
+root $ kubectl get nodes
+NAME      STATUS    AGE       VERSION
+teacher   Ready     8m        v1.7.3
 ```
