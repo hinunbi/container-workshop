@@ -34,16 +34,16 @@ root $ gedit /etc/hosts
 실습에서 사용할 yum 경로를 추가합니다. 
 
 ```bash
-root $ gedit /etc/yum.repo.d/utils.repo
+root $ gedit /etc/yum.repos.d/utils.repo
 ```
 /etc/yum.repos.d/utils.repo : 
 
-```
- [utils-repo]
- name=rhel-7-utils
- baseurl=http://jcha-osx.local:8000/
- enabled=1
- gpgcheck=0
+``` 
+[utils-repo]
+name=rhel-7-utils
+baseurl=http://jcha-osx.local:8000/
+enabled=1
+gpgcheck=0
 ```
 
 
@@ -92,8 +92,17 @@ root $ sed -i 's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+NOPASSWD:\s\+ALL\)/\1/' /etc/sudo
 원할한 실습 진행을 위해 몇몇 유틸리티를 설치합니다
 
 ```bash
-root $ yum install -y wget bash-completion 
+root $ yum install -y wget git bash-completion 
 ```
+jq는 JSON 데이터를 위한 sed 같은 도구입니다. 
+jq는 sed, awk, grep 와 같이 텍스트로 재생할 수 있도록 구조화된 
+데이터를 슬라이스, 필터링, 매핑 및 변환에 사용됩니다.
 
+
+```bash
+root $ curl -LO https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
+root $ chmod +x ./jq-linux64
+root $ mv ./jq-linux64 /usr/local/bin/jq
+```
 
  
