@@ -49,7 +49,36 @@ root $ su - student
 student $ cd ~/container-workshop/lab04
 student $ cp ~/container-workshop/cats/target/cats-1.0.jar .
 student $ docker build -t cats .
+student $ docker images
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+docker-cats         latest              15546c8440c6        30 minutes ago      250.6 MB
+openjdk             8-jre-slim          9799b08757cc        3 weeks ago         206.5 MB
+mysql               latest              c73c7527c03a        3 weeks ago         412.3 MB
+hello-world         latest              1815c82652c0        9 weeks ago         1.84 kB
 ```
 
+## Cats Docker 컨테이너 실행
 
+
+```bash
+root $ su - student
+student $ cd ~/container-workshop/lab04
+student $ cp ~/container-workshop/cats/target/cats-1.0.jar .
+student $ docker build -t cats .
+```
+
+cats-compose.yml : 
+```
+docker-cats:
+  image: cats
+  container_name: docker-cats
+  ports:
+    - "8080:8080"
+  environment:
+    ACTIVEMQ_SERVICE_HOST: "jcha-OSX.local"
+    ACTIVEMQ_SERVICE_PORT: 61616
+    MYSQL_SERVICE_HOST: "localhost"
+    MYSQL_SERVICE_PORT: 3306
+```
   
