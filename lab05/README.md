@@ -42,6 +42,12 @@ root $ chmod +x ./kubectl
 root $ kubectl version
 ```
 
+## kubectl bash autocompletion 기능 추가
+```
+$ echo "source <(kubectl completion bash)" >> ~/.bashrc
+```
+
+
 ## kubelet 설치, 실행
 
 kubelet은 각 노드에서 실행되는 기본 "노드 에이전트"입니다.
@@ -164,7 +170,7 @@ root $ kubeadm init
 ```
 
 
-## student 계정의 Kubernetes 클러스터 접속 설정
+## student 를 Kubernetes 클러스터 접속 계정으로 설정
 ```
 root $ su - student
 student $ mkdir -p $HOME/.kube
@@ -194,5 +200,14 @@ student $ kubectl get nodes
 NAME      STATUS    AGE       VERSION
 teacher   Ready     8m        v1.7.3
 
-student $ docker ps 
+student $ kubectl get pod --all-namespaces 
+
+NAMESPACE     NAME                              READY     STATUS             RESTARTS   AGE
+kube-system   etcd-teacher                      1/1       Running            0          31m
+kube-system   kube-apiserver-teacher            1/1       Running            0          31m
+kube-system   kube-controller-manager-teacher   1/1       Running            0          31m
+kube-system   kube-dns-2425271678-lg0zp         1/3       CrashLoopBackOff   15         32m
+kube-system   kube-proxy-c345j                  1/1       Running            0          32m
+kube-system   kube-scheduler-teacher            1/1       Running            0          31m
+kube-system   weave-net-qlb1f                   2/2       Running            0          26m
 ```
