@@ -60,9 +60,11 @@ hello-world         latest              1815c82652c0        9 weeks ago         
 
 ## Cats Docker 컨테이너 실행
 
-### Docker run 을 이용한 실행
+Docker 이미지를 실행하는 방법은 docker run 명령을 이용하거나 docker-compse 명령을 이용합니다. 
+* Docker 컨테이너 실행 시 docker run 과 docker-compose 명령은 혼용할 수 없습니다
+### Docker run 을 이용한 컨테이너 실행
 
-Docker 명령을 이용해 컨테이너 이미지를 실행하는 방법입니다. 
+Docker run 명령을 이용해 Cats Docker 이미지를 컨테이너로 실행하는 방법입니다. 
 
 ```
 root $ su - student
@@ -77,7 +79,7 @@ student $ docker run --name docker-cats -d -p 8080:8080 \
 student $ docker ps          
 student $ docker logs -f docker-cats
 ```
-Docker 명령을 이용한 컨테이너 실행 종료 방법입니다. 
+Docker 명령을 이용한 Cats 컨테이너 실행 종료 방법입니다. 
 
 ```
 student $ docker rm -v docker-cats
@@ -85,7 +87,8 @@ student $ docker rm -v docker-cats
 
 ### Docker Compose 를 이용한 실행
 
-Docker Compse 명령을 이용해 컨테이너 이미지를 실행하는 방법입니다.
+Docker Compose 명령을 이용해 Cats Docker 이미지를 컨테이너로 실행하는 방법입니다.
+
 ```
 root $ su - student
 student $ cd ~/container-workshop/lab04
@@ -109,7 +112,7 @@ services:
       MYSQL_SERVICE_PORT: 3306
 ```
 
-Docker Compse 이용한 컨테이너 실행 종료 방법입니다. 
+Docker Compose 이용한 Cats 컨테이너 실행 종료 방법입니다. 
 ```
 root $ su - student
 student $ cd ~/container-workshop/lab04
@@ -117,7 +120,7 @@ student $ export HOST_IP=$(hostname --ip-address) && \
           docker-compose -p cats -f cats-compose.yml down
 ```
 
-## Cats Dockre 컨테이너 애플리케이션 웹 페이지 조회
+## Cats Docker 컨테이너 애플리케이션 웹 페이지 조회
 
 ```
 root $ su - student
