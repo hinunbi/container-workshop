@@ -194,5 +194,5 @@ student $ kubectl get nodes
 NAME      STATUS    AGE       VERSION
 teacher   Ready     8m        v1.7.3
 
-root $ docker ps 
+student $ docker ps 
 ```
