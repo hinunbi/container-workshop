@@ -15,12 +15,12 @@ Red Hat Container Workshop
  
 ## 실습 과정
   
-   * lab01 : 사전 준비 
-   * lab02 : 물리 서버 환경에서 애플리케이션 실행
-   * lab03 : Docker 설치 및 컨테이너 실행
-   * lab04 : Docker 환경에서 애플리케이션 개발과 실행
-   * lab05 : Kubernetes 설치 및 Pod 실행 
-   * lab06 : Kubernets 환경에서 애플리케이션 개발과 실행
+   * lab01 - 사전 준비 
+   * lab02 - 애플리케이션 개발, 빌드, 실행 실습
+   * lab03 - Docker 설치 및 컨테이너 실행
+   * lab04 - Docker 환경에서 애플리케이션 개발과 실행
+   * lab05 - Kubernetes 설치 및 Pod 실행 
+   * lab06 - Kubernets 환경에서 애플리케이션 개발과 실행
 
 ## 컨테이너 애플리케이션 구성도
 
