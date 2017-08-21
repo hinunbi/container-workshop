@@ -10,7 +10,7 @@ Lab four - Docker 환경에서 애플리케이션 개발과 실행
 ```bash
 root $ su - student
 student $ cd ~/container-workshop/lab04
-student $ docker-compose -f mysql-compose.yml up -d
+student $ docker-compose -p myslq -f mysql-compose.yml up -d
 student $ docker ps
 [student@teacher lab04]$ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                    NAMES
@@ -35,7 +35,7 @@ docker-mysql:
 ```
 root $ su - student
 student $ cd ~/container-workshop/lab04
-student $ docker-compose -f mysql-compose.yml down
+student $ docker-compose -p mysql -f mysql-compose.yml down
 student $ docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES 
 ```
@@ -60,11 +60,19 @@ hello-world         latest              1815c82652c0        9 weeks ago         
 
 ## Cats Docker 컨테이너 실행
 
-
+### Docker run 를 이용한 실행
 ```
 root $ su - student
 student $ cd ~/container-workshop/lab04
-student $ HOST_IP=$(hostname --ip-address) docker-compose -f cats-compose.yml up
+student $ HOST_IP=$(hostname --ip-address) docker-compose -p cats -f cats-compose.yml up
+```
+
+
+Docker Compose 를 이용한 실행
+```
+root $ su - student
+student $ cd ~/container-workshop/lab04
+student $ HOST_IP=$(hostname --ip-address) docker-compose -p cats -f cats-compose.yml up
 ```
 
 cats-compose.yml : 
