@@ -3,7 +3,7 @@ services:
   docker-mysql:
     image: mysql
     container_name: docker-mysql
-    restart: on-failure
+    restart: always
     ports:
       - "3306:3306"
     environment:
