@@ -13,19 +13,18 @@ Lab two - 애플리케이션 개발, 빌드, 실행
 
 ```bash
 root $ sudo yum install -y java-1.8.0-openjdk-devel
-root $ sudo yum install -y java-1.8.0-openjdk-devel  --downloadonly --downloaddir=/var/www/html/repo
 root $ java -version
 ```
    
    Maven 개발 도구를 설치하고 환경 변수를 등록 합니다.
 ```bash
 root $ cd /opt
-root $ sudo wget http://mirror.apache-kr.org/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz
-root $ sudo tar xzf apache-maven-3.5.0-bin.tar.gz
-root $ sudo ln -s apache-maven-3.5.0 maven
-root $ sudo sh -c 'echo -e "export M2_HOME=/opt/maven\nexport PATH=/opt/maven/bin:${PATH}\n" > /etc/profile.d/maven.sh' 
+root $ wget http://mirror.apache-kr.org/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz
+root $ tar xzf apache-maven-3.5.0-bin.tar.gz
+root $ ln -s apache-maven-3.5.0 maven
+root $ sh -c 'echo -e "export M2_HOME=/opt/maven\nexport PATH=/opt/maven/bin:${PATH}\n" > /etc/profile.d/maven.sh' 
 root $ source /etc/profile.d/maven.sh
-root $ sudo rm -rf apache-maven-3.5.0-bin.tar.gz
+root $ rm -rf apache-maven-3.5.0-bin.tar.gz
 root $ mvn -version
 ```   
 
@@ -48,9 +47,14 @@ student $ cd container-workshop
 
 ## 애플리케이션 빌드
 
+cats 애플리케이션 패키지를 생성합니다. 
+아래 과정이 완성되면 cats-1.0.jar 패키지 파일이 생성됩니다. 
+생성된 cats-1.0.jar 패키지는 이후 실습에서 Docker 이미지에 포함될 것입니다.
+
 ```bash
 student $ cd ~/container-workshop/cats
-student $ mvn package
+student $ mvn clean package -DskipTests
 student $ ls -al target/*.jar
+-rw-rw-r--. 1 student student 44158463  8월 21 16:42 target/cats-1.0.jar
 ```
  
