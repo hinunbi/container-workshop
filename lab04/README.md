@@ -18,6 +18,20 @@ student $ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                    NAMES
 e28ffb60a7ae        mysql               "docker-entrypoint.sh"   About a minute ago   Up 2 seconds        0.0.0.0:3306->3306/tcp   docker-mysql
 ```
+mysql-compose.yml : 
+```yaml
+docker-mysql:
+  image: mysql
+  container_name: docker-mysql
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_DATABASE: "cats"
+    MYSQL_USER: "cat"
+    MYSQL_PASSWORD: "meow"
+    MYSQL_ROOT_PASSWORD: "mysql"
+```
+
 ## MySQL Docker 컨테이너 종료
 
 ```bash
