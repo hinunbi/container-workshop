@@ -18,7 +18,7 @@ root $ gedit /etc/hostname
 ```
 /etc/hostname : 
 ```
-studentend01
+student01
 ```
 hosts 파일에 실습 참석자 호스트 IP와 호스트 이름을 추가합니다
 ```bash
