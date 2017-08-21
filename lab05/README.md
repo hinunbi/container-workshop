@@ -1,4 +1,4 @@
-Lab five - Kubernetes 설치 및 Pod 실행
+Lab 05 - Kubernetes 설치 및 Pod 실행
 ===
 
 * 이 문서는 Red Hat Enterprise Linux 7.3 을 기반으로 작성됐습니다.

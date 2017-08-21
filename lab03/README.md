@@ -1,4 +1,4 @@
-Lab three - Docker 설치 및 컨테이너 실행
+Lab 03 - Docker 설치 및 컨테이너 실행
 ===
 
 * 이 문서는 Red Hat Enterprise Linux 7.3 을 기반으로 작성됐습니다.

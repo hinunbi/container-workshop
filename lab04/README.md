@@ -1,4 +1,4 @@
-Lab four - Docker 환경에서 컨테이너 이미지 빌드와 실행
+Lab 04 - Docker 환경에서 컨테이너 이미지 빌드와 실행
 ===
 
 * 이 문서는 Red Hat Enterprise Linux 7.3 을 기반으로 작성됐습니다.
