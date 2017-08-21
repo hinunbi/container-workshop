@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Cats 컨테이너 실행
 docker run --name docker-cats -it --rm -p 8080:8080 \
 -e $ACTIVEMQ_SERVICE_HOST=jcha-OSX.local \
