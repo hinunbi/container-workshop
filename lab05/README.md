@@ -23,18 +23,20 @@ kubeadm 을 설치하기 위한 yum 레파지토리를 로컬 시스템에 등�
 ```
 root $ su - student
 student $ cd ~/container-workshop/lab05
-student $ chmod +x kube-repository.sh
-student $ ./kube-repository.sh
+student $ sudo cp kubernetes.repo /etc/yum.repos.d
+student $ sudo yum repolist -y
+student $ sudo yum makecache
 ```
 
-kube-repository.sh :
+kubernetes.repo :
 
 ```
-#!/bin/bash
-
-cat <<EOF | tee /etc/yum.repos.d/kubernetes.repo > /dev/null
 [kubernetes]
 name=Kubernetes
 baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
-
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
+       https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 ```
