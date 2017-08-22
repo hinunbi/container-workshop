@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql
+  clusterIP: None
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: kubernetes-mysql
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: mysql
+        name: mysql
+        env:
+          # Use secret in real usage
+        - name: MYSQL_DATABASE
+          value: cats
+        - name: MYSQL_USER
+          value: cat
+        - name: MYSQL_PASSWORD
+          value: meow
+        - name: MYSQL_ROOT_PASSWORD
+          value: mysql
+        ports:
+        - containerPort: 3306
+          name: mysql
