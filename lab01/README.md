@@ -32,23 +32,6 @@ root $ gedit /etc/hosts
 ...
 ```
 
-## yum 저장소 등록
-
-실습에서 사용할 yum 경로를 추가합니다. 
-
-```bash
-root $ gedit /etc/yum.repos.d/utils.repo
-```
-/etc/yum.repos.d/utils.repo : 
-
-``` 
-[utils-repo]
-name=rhel-7-utils
-baseurl=http://jcha-osx.local:8000/
-enabled=1
-gpgcheck=0
-```
-
 ## 실습 사용자 생성
 
 root 계정으로 워크샵 실습 사용자 계정 **student** 을 생성합니다. 
@@ -86,7 +69,7 @@ root $ sed -i 's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+NOPASSWD:\s\+ALL\)/\1/' /etc/sudo
 원할한 실습 진행을 위해 몇몇 유틸리티를 설치합니다
 
 ```bash
-root $ yum install -y wget git bash-completion 
+root $ yum install -y wget git bash-completion telnet 
 ```
 jq는 JSON 데이터를 위한 sed 같은 도구입니다. 
 jq는 sed, awk, grep 와 같이 텍스트로 재생할 수 있도록 구조화된 
