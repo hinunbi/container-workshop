@@ -48,6 +48,7 @@ lab02에서 생성한 cats-1.0.jar 패키지를 Docker 이미지로 빌드합니
 root $ su - student
 student $ cd ~/container-workshop/lab04
 student $ cp ~/container-workshop/cats/target/cats-1.0.jar .
+student $ cp ~/container-workshop/cats/ssl/client.ts .
 student $ docker build -t cats .
 student $ docker images
 
@@ -70,8 +71,7 @@ Docker run 명령을 이용해 Cats Docker 이미지를 컨테이너로 실행�
 root $ su - student
 student $ cd ~/container-workshop/lab04
 student $ docker run --name docker-cats -d -p 8080:8080 \
-          -e ACTIVEMQ_SERVICE_HOST=jcha-OSX.local \
-          -e ACTIVEMQ_SERVICE_PORT=61616 \
+          -e ACTIVEMQ_BROKER_URL=ssl://amq-broker-ssl-amq-tcp-ssl-container-workshop.1d35.starter-us-east-1.openshiftapps.com \
           -e MYSQL_SERVICE_HOST=$(hostname --ip-address) \
           -e MYSQL_SERVICE_PORT=3306 \
           cats
