@@ -12,7 +12,7 @@ Lab 02 - 애플리케이션 개발, 빌드
    이미 설치되어 있지 않은 경우, Open JDK 를 설치합니다.
 
 ```bash
-root $ sudo yum install -y java-1.8.0-openjdk-devel
+root $ yum install -y java-1.8.0-openjdk-devel
 root $ java -version
 ```
    
