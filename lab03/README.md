@@ -11,7 +11,7 @@ Lab 03 - Docker 설치 및 컨테이너 실행
 root $ rpm --import "https://sks-keyservers.net/pks/lookup?op=get&search=0xee6d536cf7dc86e2d7d56f59a178ac6c6238f52e"
 root $ yum-config-manager --add-repo https://packages.docker.com/1.12/yum/repo/main/centos/7
 root $ yum makecache fast
-root $ yum install -y docker-engine --downloaddir=/var/www/html/repo
+root $ yum install -y docker-engine
 root $ systemctl start docker
 root $ systemctl enable docker
 root $ docker version
