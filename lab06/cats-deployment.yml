@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cats
+spec:
+  ports:
+  - port: 8080
+  selector:
+    app: cats
+  clusterIP: None
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: cats
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: cats
+    spec:
+      containers:
+      - image: cats
+        name: cats
+        env:
+          # Use secret in real usage
+        - name: ACTIVEMQ_SERVICE_HOST
+          value: https://amq-broker-ssl-amq-tcp-ssl-container-workshop.1d35.starter-us-east-1.openshiftapps.com
+        - name: ACTIVEMQ_SERVICE_PORT
+          value: 443
+        - name: MYSQL_SERVICE_HOST
+          value: mysql-service
+        - name: MYSQL_SERVICE_PORT
+          value: 3306
+        ports:
+        - containerPort: 8080
+          name: cats

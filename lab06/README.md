@@ -14,3 +14,32 @@ student $ kubectl create -f mysql-deployment.yml
 student $ kubectl describe deployment mysql
 student $ kubectl get pods -l app=mysql
 ```
+
+## mysql 서비스 노출
+
+```
+student $ kubectl expose deployment kubernetes-mysql --name=mysql-service
+student $ kubectl get service mysql-service
+student $ kubectl 
+...
+kubectl delete services mysql-service
+
+```
+
+## cats 파드 실행
+
+```
+root $ su - student
+student $ ~/container-workshop/lab06
+student $ kubectl create -f mysql-deployment.yml 
+student $ kubectl describe deployment mysql
+student $ kubectl get pods -l app=mysql
+```
+
+## 서비스 DNS 조회 
+```
+student $ kubectl run curl --image=radial/busyboxplus:curl -i --tty
+busybox $ nslookup my-nginx
+..
+student $ kubectl exec -it curl-2716574283-c2750 sh
+```
