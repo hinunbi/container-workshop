@@ -106,8 +106,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      ACTIVEMQ_SERVICE_HOST: "jcha-OSX.local"
-      ACTIVEMQ_SERVICE_PORT: 61616
+      ACTIVEMQ_BROKER_URL: "ssl://amq-broker-ssl-amq-tcp-ssl-container-workshop.1d35.starter-us-east-1.openshiftapps.com:443"
       MYSQL_SERVICE_HOST: ${HOST_IP}
       MYSQL_SERVICE_PORT: 3306
 ```
