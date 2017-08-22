@@ -71,7 +71,7 @@ Docker run 명령을 이용해 Cats Docker 이미지를 컨테이너로 실행�
 root $ su - student
 student $ cd ~/container-workshop/lab04
 student $ docker run --name docker-cats -d -p 8080:8080 \
-          -e ACTIVEMQ_BROKER_URL=ssl://amq-broker-ssl-amq-tcp-ssl-container-workshop.1d35.starter-us-east-1.openshiftapps.com \
+          -e ACTIVEMQ_BROKER_URL=ssl://amq-broker-ssl-amq-tcp-ssl-container-workshop.1d35.starter-us-east-1.openshiftapps.com:443 \
           -e MYSQL_SERVICE_HOST=$(hostname --ip-address) \
           -e MYSQL_SERVICE_PORT=3306 \
           cats
