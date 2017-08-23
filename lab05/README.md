@@ -187,7 +187,7 @@ student $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 ## Kubernetes Flannel 네트워크 설치
 
-Kubernetes 네트워크를 Weave Net 으로 설치합니다. 
+Kubernetes 네트워크를 Flannel 로 설치합니다. 
 Kubernetes 클러스터에 네트워크를 설치하면 노드 정보를 조회할 수 있게 됩니다.
 그러나 네크워크를 설치하더라도, 아직 로컬 시스템이 애플리케이션 노드로 전환되지 않았습니다 
 ```
