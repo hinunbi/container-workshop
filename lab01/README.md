@@ -12,7 +12,7 @@ Lab 01 - 사전 준비
 * 실습은 아마존 인스턴스에서 진행됩니다. 
 * 아마존 인스턴스 접속 정보는 실습 현장에서 알려드립니다. 아래 링크를 참조하여 주십시오.
 
-    [Container Workshop 2017](https://docs.google.com/a/redhat.com/spreadsheets/d/e/2PACX-1vS8g_BSiidV5XlEhHkKMyVxdnPcYYI3b1B7mJQpA1IyN2Fuoak8yp8dsHDfNovbVsS9WU8YVQvD_-p3/pubhtml)
+    [Container Workshop 2017](https://docs.google.com/spreadsheets/d/1ptFys3dCTHiFYZxrcshd7XuoSzLxrsxmwQCtZ91Kr74/edit?usp=sharing)
 * 제공되는 아마존 인스턴스의 VNC 접속 패스워드는 **student** 입니다. 
 * 아래 주소에서 로컬 시스템에 맞는 VNC 설치 프로그램을 다운로드해 설치합니다. 
 
