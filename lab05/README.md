@@ -221,5 +221,5 @@ kube-system   weave-net-qlb1f                   2/2       Running            0  
 
 ```
 student $ kubectl run hello-world --image=tutum/hello-world --replicas=1 --port=80
-student $ kubectl expose deployment hello-world --type=LoadBalancer
+student $ kubectl expose deployment hello-world
 ```
