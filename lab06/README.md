@@ -19,7 +19,7 @@ student $ kubectl delete deployment mysql
 ## mysql 서비스 노출
 
 ```
-student $ kubectl expose deployment mysql 
+student $ kubectl expose deployment mysql --session-affinity=ClientIP
 student $ kubectl get service mysql
 student $ kubectl describe service mysql
 ...
