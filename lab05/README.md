@@ -178,6 +178,7 @@ root $ kubeadm init
 ## student 를 Kubernetes 클러스터 접속 계정으로 설정
 ```
 root $ su - student
+student $ rm -rf $HOME/.kube
 student $ mkdir -p $HOME/.kube
 student $ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 student $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
