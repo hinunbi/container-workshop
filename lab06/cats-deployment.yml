@@ -17,7 +17,7 @@ spec:
         env:
           # Use secret in real usage
         - name: ACTIVEMQ_BROKER_URL
-          value: ssl://amq-broker-ssl-amq-tcp-ssl-container-workshop.1d35.starter-us-east-1.openshiftapps.com:443
+          value: "ssl://amq-broker-ssl-amq-tcp-ssl-container-workshop.1d35.starter-us-east-1.openshiftapps.com:443"
         - name: ACTIVEMQ_SERVICE_PORT
           value: 443
         - name: MYSQL_SERVICE_HOST
