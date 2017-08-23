@@ -185,14 +185,13 @@ student $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 ```
 
-## Kubernetes Weave Net 설치
+## Kubernetes Calico 네트워크 설치
 
 Kubernetes 네트워크를 Weave Net 으로 설치합니다. 
 Kubernetes 클러스터에 네트워크를 설치하면 노드 정보를 조회할 수 있게 됩니다.
 그러나 네크워크를 설치하더라도, 아직 로컬 시스템이 애플리케이션 노드로 전환되지 않았습니다 
 ```
-student $ export kubever=$(kubectl version | base64 | tr -d '\n')
-student $ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"
+student $ kubectl apply -f http://docs.projectcalico.org/v2.4/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
 student $ kubectl get node
 NAME      STATUS     AGE       VERSION
 teacher   NotReady   6m        v1.7.3
