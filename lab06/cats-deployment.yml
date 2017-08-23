@@ -12,7 +12,7 @@ spec:
         app: cats
     spec:
       containers:
-      - image: cats
+      - image: hinunbi/cats
         name: cats
         env:
         - name: ACTIVEMQ_BROKER_URL
