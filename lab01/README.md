@@ -6,6 +6,14 @@ Lab 01 - 사전 준비
 * 이 문서는 Red Hat Enterprise Linux 를 기반으로 작성됐습니다.
 * 반드시 명령 실행은 프롬프트 앞에 *표시된 계정* 으로 명령을 실행합니다.  
 
+
+## VNC 클라이언트 설치
+
+아래 주소에 접속해 로컬 시스템에 맞는 VNC 설치 프로그램을 다운로드해 설치합니다 
+
+[https://www.realvnc.com/en/connect/download/vnc/](https://www.realvnc.com/en/connect/download/vnc/)
+
+
 ## 호스트 이름 설정
 
 실습 시스템의 호스트 이름 **student** 뒤에 실습 참석자의 번호를 입력합니다. 
