@@ -153,13 +153,6 @@
       <artifactId>camel-stream</artifactId>
     </dependency>
 
-    <!-- Utils -->
-    <!-- <dependency> -->
-    <!-- <groupId>org.apache.commons</groupId> -->
-    <!-- <artifactId>commons-lang3</artifactId> -->
-    <!-- <version>3.6</version> -->
-    <!-- </dependency> -->
-
     <!-- MySQL -->
     <dependency>
       <groupId>mysql</groupId>
