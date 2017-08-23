@@ -33,6 +33,7 @@ student $ ~/container-workshop/lab06
 student $ kubectl create -f cats-deployment.yml 
 student $ kubectl describe deployment cats
 student $ kubectl get pods -l app=cats
+student $ kubectl exec -it cats-121008331-nckdp -- sh
 ```
 ## cats 서비스 노출
 
