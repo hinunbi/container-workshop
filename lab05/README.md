@@ -38,7 +38,7 @@ kubectl은 Kubernetes 클러스터의 명령을 실행하기 위한 명령행 �
 ```
 student $ sudo su -
 root $ cd /usr/local/bin
-root $ curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl       
+root $ curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 root $ chmod +x ./kubectl
 root $ kubectl version
 ```
@@ -46,6 +46,7 @@ root $ kubectl version
 ## kubectl bash autocompletion 기능 추가
 ```
 $ echo "source <(kubectl completion bash)" >> ~/.bashrc
+$ source ~/.bashrc
 ```
 
 
