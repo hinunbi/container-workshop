@@ -29,7 +29,6 @@ root $ gedit /etc/hosts
 ```bash
 ...
 192.168.181.61 student01
-192.168.181.210 jcha-OSX.local
 ...
 ```
 
