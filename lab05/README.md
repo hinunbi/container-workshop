@@ -70,8 +70,11 @@ root $ systemctl status kubelet
 
 ## kubeadm 설치
 
+설치에 앞서 가상 머신에 기설치된 atomic-openshift-clients 패키지를 제거합니다. 
+
 ```
 student $ sudo su -
+root $ yum remove -y atomic-openshift-*
 root $ yum install -y kubeadm
 ```
 
