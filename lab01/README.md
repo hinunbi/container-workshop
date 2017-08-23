@@ -7,9 +7,11 @@ Lab 01 - 사전 준비
 * 반드시 명령 실행은 프롬프트 앞에 *표시된 계정* 으로 명령을 실행합니다.  
 
 
-## VNC 클라이언트 설치
+## VNC 클라이언트
 
-아래 주소에 접속해 로컬 시스템에 맞는 VNC 설치 프로그램을 다운로드해 설치합니다 
+* 실습은 아마존 인스턴스에서 진행됩니다. 
+* 제공되는 아마존 인스턴스의 VNC 접속 패스워드는 **student** 입니다. 
+* 아래 주소에서 로컬 시스템에 맞는 VNC 설치 프로그램을 다운로드해 설치합니다. 
 
 [https://www.realvnc.com/en/connect/download/vnc/](https://www.realvnc.com/en/connect/download/vnc/)
 
