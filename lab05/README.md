@@ -128,7 +128,8 @@ Environment="KUBELET_CGROUP_ARGS=--cgroup-driver=cgroupfs"
 
 ## kubeadm 다시 실행
 
-
+설치 여러 kubernetes 파드들의 설치를 포함하므로 어느 정도 시간이 소요됩니다. "watch kubectl get pod --all-namespaces"
+ 명령을 이용하면 설치되는 과정을 확인할 수 있습니다.
 ```
 root $ systemctl daemon-reload
 root $ setenforce 0
@@ -193,9 +194,13 @@ student $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ## Kubernetes Calico 네트워크 설치
 
 Kubernetes 네트워크를 Calico 로 설치합니다. 
+설치 과정은 네트워크 파드 설치를 포함하므로 어느 정도 시간이 소요됩니다.
 Kubernetes 클러스터에 네트워크를 설치하면 노드 정보를 조회할 수 있게 됩니다.
 그러나 네크워크를 설치하더라도, 아직 로컬 시스템이 애플리케이션 노드로 전환되지 않았습니다 
 ```
+student $ watch kubectl get pod --all-namespaces 
+...
+
 student $ kubectl apply -f http://docs.projectcalico.org/v2.4/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
 student $ kubectl get node
 NAME      STATUS     AGE       VERSION
