@@ -8,7 +8,7 @@ Lab 06 - Kubernets 환경에서 애플리케이션 배포와 실행
 
 ```
 root $ su - student
-student $ ~/container-workshop/lab06
+student $ cd ~/container-workshop/lab06
 student $ kubectl create -f mysql-deployment.yml 
 student $ kubectl describe deployment mysql
 student $ kubectl get pods -l app=mysql
