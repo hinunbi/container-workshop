@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: cats
 spec:
+  replicas: 1
   strategy:
     type: Recreate
   template:
