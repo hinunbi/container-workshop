@@ -8,9 +8,9 @@ Lab 04 - Docker 환경에서 컨테이너 이미지 빌드와 실행
 ## MySQL Docker 컨테이너 실행
 
 ```
-root $ su - student
+root $ sudo su - student
 student $ cd ~/container-workshop/lab04
-student $ docker-compose -p myslq -f mysql-compose.yml up -d
+student $ docker-compose -p mysql -f mysql-compose.yml up -d
 student $ docker ps
 [student@teacher lab04]$ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                    NAMES
@@ -30,22 +30,13 @@ docker-mysql:
     MYSQL_ROOT_PASSWORD: "mysql"
 ```
 
-## MySQL Docker 컨테이너 종료
-
-```
-root $ su - student
-student $ cd ~/container-workshop/lab04
-student $ docker-compose -p mysql -f mysql-compose.yml down
-student $ docker ps
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES 
-```
  
 ## Cats Docker 이미지 빌드
 
 lab02에서 생성한 cats-1.0.jar 패키지를 Docker 이미지로 빌드합니다.
 
 ```
-root $ su - student
+root $ sudo su - student
 student $ cd ~/container-workshop/lab04
 student $ cp ~/container-workshop/cats/target/cats-1.0.jar .
 student $ cp ~/container-workshop/cats/ssl/client.ts .
@@ -68,7 +59,7 @@ Docker 이미지를 실행하는 방법은 docker run 명령을 이용하거나 
 Docker run 명령을 이용해 Cats Docker 이미지를 컨테이너로 실행하는 방법입니다. 
 
 ```
-root $ su - student
+root $ sudo su - student
 student $ cd ~/container-workshop/lab04
 student $ docker run --name docker-cats -d -p 8080:8080 \
           -e ACTIVEMQ_BROKER_URL=ssl://amq-broker-ssl-amq-tcp-ssl-container-workshop.1d35.starter-us-east-1.openshiftapps.com:443 \
@@ -90,7 +81,7 @@ student $ docker rm -v docker-cats
 Docker Compose 명령을 이용해 Cats Docker 이미지를 컨테이너로 실행하는 방법입니다.
 
 ```
-root $ su - student
+root $ sudo su - student
 student $ cd ~/container-workshop/lab04
 student $ export HOST_IP=$(hostname --ip-address) && \
           docker-compose -p cats -f cats-compose.yml up
@@ -113,7 +104,7 @@ services:
 
 Docker Compose 이용한 Cats 컨테이너 실행 종료 방법입니다. 
 ```
-root $ su - student
+root $ sudo su - student
 student $ cd ~/container-workshop/lab04
 student $ export HOST_IP=$(hostname --ip-address) && \
           docker-compose -p cats -f cats-compose.yml down
@@ -122,6 +113,18 @@ student $ export HOST_IP=$(hostname --ip-address) && \
 ## Cats Docker 컨테이너 애플리케이션 웹 페이지 조회
 
 ```
-root $ su - student
+root $ sudo su - student
 student $ firefox http://localhost:8080 &
-```  
+```
+
+## MySQL Docker 컨테이너 종료
+
+```
+root $ su - student
+student $ cd ~/container-workshop/lab04
+student $ docker-compose -p mysql -f mysql-compose.yml down
+student $ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES 
+```
+
+  
