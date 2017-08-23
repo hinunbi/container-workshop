@@ -69,6 +69,7 @@ root $ systemctl status kubelet
 ## kubeadm 설치
 
 ```
+student $ sudo su -
 root $ yum install -y kubeadm
 ```
 
