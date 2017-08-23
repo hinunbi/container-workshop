@@ -14,6 +14,7 @@ Lab 01 - 사전 준비
 DHCP로 할당된 경우도 
 
 ```bash
+student $ sudo su -
 root $ gedit /etc/hostname
 ```
 /etc/hostname : 
