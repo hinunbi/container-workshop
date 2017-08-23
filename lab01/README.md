@@ -58,8 +58,7 @@ root $ usermod -aG wheel student
 ``` 
 
 ## 실습 사용자 sudo 사용 설정
-실습 사용자 student 계정이 패스워드 없이 sudo 를 사용할 수 있게 설정합니다.
-
+실습 사용자 student 계정이 패스워드 없이 sudo 를 사용할 수 있게 설정을 추가합니다.
 
 ```
 root $ gedit /etc/sudoers
@@ -68,14 +67,9 @@ root $ gedit /etc/sudoers
 /etc/sudoers :
 
 ```
-..
-## Allows people in group wheel to run all commands
-%wheel  ALL=(ALL)       NOPASSWD: ALL
 ...
-```
-아래 명령을 실행하면 에디터를 이용하지 않고 수정할 수 있습니다.
-```
-root $ sed -i 's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+NOPASSWD:\s\+ALL\)/\1/' /etc/sudoers
+ec2-user        ALL=(ALL)       NOPASSWD: ALL
+student         ALL=(ALL)       NOPASSWD: ALL
 ```
 
 ## 유틸리티 설치
