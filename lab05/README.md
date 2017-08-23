@@ -57,6 +57,7 @@ kubelet은 각 노드에서 실행되는 기본 "노드 에이전트"입니다.
 ### kubelet 설치, 실행
 아래 명령을 실행해 kubelet을 로컬 시스템에 설치합니다.
 ```   
+student $ sudo su -
 root $ yum install -y kubelet
 root $ setenforce 0
 root $ systemctl enable kubelet 
