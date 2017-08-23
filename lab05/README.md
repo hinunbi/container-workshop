@@ -44,6 +44,8 @@ root $ kubectl version
 ```
 
 ## kubectl bash autocompletion 기능 추가
+
+root 계정과 student 계정 모두에서 아래 명령을 실행합니다.
 ```
 $ echo "source <(kubectl completion bash)" >> ~/.bashrc
 $ source ~/.bashrc
