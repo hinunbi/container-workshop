@@ -22,6 +22,6 @@ spec:
           name: cats
         resources:
             limits:
-              memory: 384Mi
+              memory: 512Mi
             requests:
-              memory: 384Mi
+              memory: 512Mi
