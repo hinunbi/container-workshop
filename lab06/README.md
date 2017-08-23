@@ -30,8 +30,15 @@ kubectl delete services mysql-service
 ```
 root $ su - student
 student $ ~/container-workshop/lab06
-student $ kubectl create -f mysql-deployment.yml 
-student $ kubectl describe deployment mysql
-student $ kubectl get pods -l app=mysql
+student $ kubectl create -f cats-deployment.yml 
+student $ kubectl describe deployment cats
+student $ kubectl get pods -l app=cats
 ```
+## cats 서비스 노출
 
+```
+student $ kubectl expose deployment mysql --type=LoadBalancer --name=mysql-service
+student $ kubectl get service mysql-service
+student $ kubectl 
+...
+kubectl delete services mysql-service
