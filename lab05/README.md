@@ -62,6 +62,7 @@ root $ yum install -y kubelet
 root $ setenforce 0
 root $ systemctl enable kubelet 
 root $ systemctl start kubelet
+root $ systemctl status kubelet
 
 ```
 
