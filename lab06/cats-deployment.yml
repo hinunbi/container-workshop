@@ -17,7 +17,7 @@ spec:
         env:
         - name: ACTIVEMQ_BROKER_URL
           value: "ssl://amq-broker-ssl-amq-tcp-ssl-container-workshop.1d35.starter-us-east-1.openshiftapps.com:443"
-         - name: MYSQL_SERVICE_HOST
+        - name: MYSQL_SERVICE_HOST
           value: "10.106.66.123"
         ports:
         - containerPort: 8080
