@@ -20,10 +20,10 @@ student $ kubectl delete deployment mysql
 
 ```
 student $ kubectl expose deployment mysql --type=LoadBalancer --name=mysql-service
-student $ kubectl get service mysql-service
-student $ kubectl 
+student $ kubectl get service mysql
+student $ kubectl describe service mysql
 ...
-kubectl delete services mysql-service
+kubectl delete services mysql
 
 ```
 
@@ -42,10 +42,10 @@ student $ kubectl delete deployment cats
 ## cats 서비스 노출
 
 ```
-student $ kubectl expose deployment mysql
-student $ kubectl get service mysql
-student $ kubectl 
+student $ kubectl expose deployment cats
+student $ kubectl get service cats
+student $ kubectl describe service cats
 ...
-kubectl delete services mysql-service
+kubectl delete services cats
 
 
