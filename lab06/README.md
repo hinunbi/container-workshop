@@ -1,4 +1,4 @@
-Lab 05 - Kubernets 환경에서 애플리케이션 배포와 실행
+Lab 06 - Kubernets 환경에서 애플리케이션 배포와 실행
 ===
 
 * 이 문서는 Red Hat Enterprise Linux 7.3 을 기반으로 작성됐습니다.
