@@ -36,6 +36,7 @@ kubectl은 Kubernetes 클러스터의 명령을 실행하기 위한 명령행 �
 
 * 이후 과정은 root 계정으로 실행합니다.
 ```
+student $ sudo su -
 root $ cd /usr/local/bin
 root $ curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl       
 root $ chmod +x ./kubectl
