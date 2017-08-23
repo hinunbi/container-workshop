@@ -12,7 +12,6 @@ root $ sudo su - student
 student $ cd ~/container-workshop/lab04
 student $ docker-compose -p mysql -f mysql-compose.yml up -d
 student $ docker ps
-[student@teacher lab04]$ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                    NAMES
 e28ffb60a7ae        mysql               "docker-entrypoint.sh"   About a minute ago   Up 2 seconds        0.0.0.0:3306->3306/tcp   docker-mysql
 ```
