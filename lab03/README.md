@@ -7,7 +7,7 @@ Lab 03 - Docker 설치 및 컨테이너 실행
 
 ## Docker 설치
 
-```bash
+```
 root $ rpm --import "https://sks-keyservers.net/pks/lookup?op=get&search=0xee6d536cf7dc86e2d7d56f59a178ac6c6238f52e"
 root $ yum-config-manager --add-repo https://packages.docker.com/1.12/yum/repo/main/centos/7
 root $ yum makecache fast
@@ -20,7 +20,7 @@ root $ docker version
 ## Docker Compose 설치
 
 Compose는 Docker 컨테이너 애플리케이션들을 정의하고 실행하기 위한 도구입니다.
-```bash
+```
 root $ curl -L https://github.com/docker/compose/releases/download/1.14.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 root $ chmod +x /usr/local/bin/docker-compose
 root $ docker-compose version
@@ -30,21 +30,21 @@ root $ docker-compose version
 
 student 계정이 docker 명령을 직접 사용할 수 있게 설정합니다. 
 
-```bash
+```
 root $ usermod -aG docker student
 root $ systemctl restart docker
 ```
 
 ## 사용자 계정으로 Docker 명령 실행
 
-```bash
+```
 root $ su - student
 student $ docker version
 ```
  
 ## Docker 컨테이너 실행
 
-```bash
+```
 root $ su - student
 student $ docker version
 student $ docker run hello-world

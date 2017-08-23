@@ -26,7 +26,7 @@ Lab 01 - 사전 준비
 실습 참석자는 각자에게 부여된 번호를 입력합니다. 
 호스트 이름을 반영하기 위해서는 시스템을 재시작 합니다.
 
-```bash
+```
 ec2-user $ sudo su -
 root $ hostnamectl set-hostname student01
 root $ hostnamectl status
@@ -35,12 +35,12 @@ root $ reboot
 
 hosts 파일에 실습 참석자 호스트 IP와 호스트 이름을 추가합니다. 
 호스트 IP는 "ip a" 명령을 이용해 확인합니다
-```bash
+```
 root $ ip a
 root $ gedit /etc/hosts
 ```
 /etc/hosts :
-```bash
+```
 ...
 192.168.181.61 student01
 ...
@@ -51,7 +51,7 @@ root $ gedit /etc/hosts
 root 계정으로 워크샵 실습 사용자 계정 **student** 을 생성합니다. 
 워크샵에서 사용하는 사용자 패스워드는 **student** 입니다.
 
-```bash
+```
 root $ useradd -m -s /bin/bash student
 root $ echo 'student:student' | chpasswd
 root $ usermod -aG wheel student
@@ -61,7 +61,7 @@ root $ usermod -aG wheel student
 실습 사용자 student 계정이 패스워드 없이 sudo 를 사용할 수 있게 설정합니다.
 
 
-```bash
+```
 root $ gedit /etc/sudoers
 ```
 
@@ -74,7 +74,7 @@ root $ gedit /etc/sudoers
 ...
 ```
 아래 명령을 실행하면 에디터를 이용하지 않고 수정할 수 있습니다.
-```bash 
+```
 root $ sed -i 's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+NOPASSWD:\s\+ALL\)/\1/' /etc/sudoers
 ```
 
@@ -82,7 +82,7 @@ root $ sed -i 's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+NOPASSWD:\s\+ALL\)/\1/' /etc/sudo
 
 원할한 실습 진행을 위해 몇몇 유틸리티를 설치합니다
 
-```bash
+```
 root $ yum install -y wget git bash-completion telnet 
 ```
 jq는 JSON 데이터를 위한 sed 같은 도구입니다. 
@@ -90,7 +90,7 @@ jq는 sed, awk, grep 와 같이 텍스트로 재생할 수 있도록 구조화�
 데이터를 슬라이스, 필터링, 매핑 및 변환에 사용됩니다.
 
 
-```bash
+```
 root $ curl -LO https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
 root $ chmod +x ./jq-linux64
 root $ mv ./jq-linux64 /usr/local/bin/jq
