@@ -17,7 +17,7 @@ student $ kubectl get pods -l app=mysql
 ## mysql 서비스 노출
 
 ```
-student $ kubectl expose deployment/kubernetes-mysql
+student $ kubectl expose deployment/mysql
 student $ kubectl get service mysql-service
 student $ kubectl 
 ...
