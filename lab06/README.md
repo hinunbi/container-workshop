@@ -23,7 +23,7 @@ student $ kubectl expose deployment mysql --session-affinity=ClientIP
 student $ kubectl get service mysql
 student $ kubectl describe service mysql
 ...
-kubectl delete services mysql
+kubectl delete service mysql
 
 ```
 
@@ -41,11 +41,22 @@ student $ kubectl delete deployment cats
 ```
 ## cats 서비스 노출
 
+서비스 describe 명령으로 찾은 서비스 IP 를 웹 브라우저를 이용해 접속합니다. 
+서비스 IP 가 "10.106.18.56"인 경우 웹 브라우저에서 "http://10.106.18.56:8080/" 로 접속을 시도합니다.
+cats 실시간 트위어 고양이 이미지를 확인할 수 있습니다. 
+
 ```
-student $ kubectl expose deployment cats
+student $ kubectl expose deployment cats --session-affinity=ClientIP
 student $ kubectl get service cats
 student $ kubectl describe service cats
 ...
 kubectl delete services cats
+```
 
+## cats 파드 실행 개수 조정
 
+kubernets 는 scale 명령으로 간단히 파드 개수를 늘이거나, 줄일 수 있습니다
+
+```
+student $ kubectl scale deployment cats --replicas=3
+```
