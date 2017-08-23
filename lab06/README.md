@@ -31,7 +31,7 @@ kubectl delete services mysql
 
 ```
 root $ su - student
-student $ ~/container-workshop/lab06
+student $ cd ~/container-workshop/lab06
 student $ kubectl create -f cats-deployment.yml 
 student $ kubectl describe deployment cats
 student $ kubectl get pods -l app=cats
