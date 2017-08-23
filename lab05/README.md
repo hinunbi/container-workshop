@@ -128,7 +128,7 @@ Environment="KUBELET_CGROUP_ARGS=--cgroup-driver=cgroupfs"
 root $ systemctl daemon-reload
 root $ setenforce 0
 root $ kubeadm reset
-root $ kubeadm init
+root $ kubeadm init --pod-network-cidr=192.168.0.0/16
 
 [[kubeadm] WARNING: kubeadm is in beta, please do not use it for production clusters.
  [init] Using Kubernetes version: v1.7.4
