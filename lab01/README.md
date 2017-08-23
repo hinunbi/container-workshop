@@ -27,7 +27,7 @@ Lab 01 - 사전 준비
 호스트 이름을 반영하기 위해서는 시스템을 재시작 합니다.
 
 ```bash
-student $ sudo su -
+ec2-user $ sudo su -
 root $ hostnamectl set-hostname student01
 root $ hostnamectl status
 root $ reboot
