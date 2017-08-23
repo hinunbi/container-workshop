@@ -2,25 +2,26 @@ apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: alpine
-  labels:
-    application: alpine
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
         app: alpine
-spec:
-  containers:
-  - image: alpine:3.2
-    command:
-      - /bin/sh
-      - "-c"
-      - "sleep 60m"
-    imagePullPolicy: IfNotPresent
-    name: alpine
-    ports:
-      - name: http
-        containerPort: 8080
-        protocol: TCP
-      - name: ssh
-        containerPort: 22
-        protocol: TCP
+    spec:
+      containers:
+      - image: alpine:3.2
+        name: alpine
+        command:
+          - /bin/sh
+          - "-c"
+          - "sleep 60m"
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        - name: ssh
+          containerPort: 22
+          protocol: TCP
