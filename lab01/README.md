@@ -13,7 +13,7 @@ Lab 01 - 사전 준비
 * 제공되는 아마존 인스턴스의 VNC 접속 패스워드는 **student** 입니다. 
 * 아래 주소에서 로컬 시스템에 맞는 VNC 설치 프로그램을 다운로드해 설치합니다. 
 
-[https://www.realvnc.com/en/connect/download/vnc/](https://www.realvnc.com/en/connect/download/vnc/)
+    [https://www.realvnc.com/en/connect/download/vnc/](https://www.realvnc.com/en/connect/download/vnc/)
 
 
 ## 호스트 이름 설정
