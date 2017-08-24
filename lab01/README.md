@@ -42,7 +42,7 @@ root $ gedit /etc/hosts
 /etc/hosts :
 ```
 ...
-192.168.181.61 student01
+172.31.6.241 student01
 ...
 ```
 
