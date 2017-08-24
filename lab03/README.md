@@ -15,6 +15,7 @@ root $ yum install -y docker-engine
 root $ systemctl start docker
 root $ systemctl enable docker
 root $ docker version
+root $ docker images -q | xargs docker rmi
 ```
 
 ## Docker Compose 설치
