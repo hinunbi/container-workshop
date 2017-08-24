@@ -64,6 +64,7 @@ student $ docker run --name docker-cats -d --net=host -p 8080:8080 \
           -e ACTIVEMQ_BROKER_URL=ssl://broker-amq-tcp-ssl-container-workshop.apps.13.124.168.242.nip.io:443 \
           -e MYSQL_SERVICE_HOST=$(hostname --ip-address) \
           -e MYSQL_SERVICE_PORT=3306 \
+          -e _JAVA_OPTIONS=-Djava.net.preferIPv4Stack=true \
           cats
           
 student $ docker ps          
