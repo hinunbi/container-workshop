@@ -101,19 +101,20 @@ services:
       MYSQL_SERVICE_PORT: 3306
 ```
 
-Docker Compose 이용한 Cats 컨테이너 실행 종료 방법입니다. 
-```
-root $ sudo su - student
-student $ cd ~/container-workshop/lab04
-student $ export HOST_IP=$(hostname --ip-address) && \
-          docker-compose -p cats -f cats-compose.yml down
-```
 
 ## Cats Docker 컨테이너 애플리케이션 웹 페이지 조회
 
 ```
 root $ sudo su - student
 student $ firefox http://localhost:8080 &
+```
+
+Docker Compose 이용한 Cats 컨테이너 실행 종료 방법입니다. 
+```
+root $ sudo su - student
+student $ cd ~/container-workshop/lab04
+student $ export HOST_IP=$(hostname --ip-address) && \
+          docker-compose -p cats -f cats-compose.yml down
 ```
 
 ## MySQL Docker 컨테이너 종료
