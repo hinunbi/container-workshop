@@ -24,13 +24,14 @@ Lab 01 - 사전 준비
 실습 시스템의 호스트 이름 **student** 뒤에 실습 참석자의 번호를 입력합니다. 
 아래 예에서는 01 을 추가했습니다. 
 실습 참석자는 각자에게 부여된 번호를 입력합니다. 
-호스트 이름을 반영하기 위해서는 시스템을 재시작 합니다.
+호스트 이름을 반영하기 위해서는 로그 아웃 후 다시 로그인 합니다.
+로그인 후 쉡이 호스트 이름이 정상적으로 표시 되지 않는 경우 시스템을 재시작 합니다.
 
 ```
 ec2-user $ sudo su -
 root $ hostnamectl set-hostname student01
 root $ hostnamectl status
-root $ reboot
+root $ exit
 ```
 
 hosts 파일에 실습 참석자 호스트 IP와 호스트 이름을 추가합니다. 
