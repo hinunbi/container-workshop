@@ -34,7 +34,8 @@ root $ reboot
 ```
 
 hosts 파일에 실습 참석자 호스트 IP와 호스트 이름을 추가합니다. 
-호스트 IP는 "ip a" 명령을 이용해 확인합니다
+호스트 IP는 "ip a" 명령을 이용해 확인합니다. 
+**eth0** 의 IP 주소를 확인합니다
 ```
 root $ ip a
 root $ gedit /etc/hosts
@@ -49,7 +50,8 @@ root $ gedit /etc/hosts
 ## 실습 사용자 생성
 
 root 계정으로 워크샵 실습 사용자 계정 **student** 을 생성합니다. 
-워크샵에서 사용하는 사용자 패스워드는 **student** 입니다.
+워크샵에서 사용하는 사용자 패스워드는 **student** 입니다. 호스트 이름과 혼동하시지 않아야 합니다.
+호스트 이름은 사용자 패스워드에 자리 번호를 추가한 정보입니다. 
 
 ```
 root $ useradd -m -s /bin/bash student
