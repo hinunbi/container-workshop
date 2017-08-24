@@ -70,11 +70,8 @@ root $ systemctl status kubelet
 
 ## kubeadm 설치
 
-설치에 앞서 가상 머신에 기설치된 atomic-openshift-clients 패키지를 제거합니다. 
-
 ```
 student $ sudo su -
-root $ yum remove -y atomic-openshift-*
 root $ yum install -y kubeadm
 ```
 
@@ -128,7 +125,8 @@ Environment="KUBELET_CGROUP_ARGS=--cgroup-driver=cgroupfs"
 
 ## kubeadm 다시 실행
 
-설치 여러 kubernetes 파드들의 설치를 포함하므로 어느 정도 시간이 소요됩니다. "watch kubectl get pod --all-namespaces"
+설치 여러 kubernetes 파드들의 설치를 포함하므로 어느 정도 시간이 소요됩니다. 
+"watch kubectl get pod --all-namespaces"
  명령을 이용하면 설치되는 과정을 확인할 수 있습니다.
 ```
 root $ systemctl daemon-reload
