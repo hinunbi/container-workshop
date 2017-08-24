@@ -18,6 +18,12 @@ Lab 01 - 사전 준비
 
     [https://www.realvnc.com/en/connect/download/vnc/](https://www.realvnc.com/en/connect/download/vnc/)
 
+    [container-workshop-20170824](./container-workshop-20170824.pem)
+    [container-workshop-20170824-singapore](./container-workshop-20170824-singapore.pem)
+    [container-workshop-20170824-sysdney](./container-workshop-20170824-sydney.pem)
+    [container-workshop-20170824-tokyo](./container-workshop-20170824-tokyo.pem)
+
+
 
 ## 호스트 이름 설정
 
