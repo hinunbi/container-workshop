@@ -73,7 +73,7 @@ root $ usermod -aG wheel student
 실습 사용자 student 계정이 패스워드 없이 sudo 를 사용할 수 있게 설정을 추가합니다.
 
 ```
-root $ gedit /etc/sudoers
+root $ visudo
 ```
 
 /etc/sudoers :
