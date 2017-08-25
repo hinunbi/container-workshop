@@ -56,6 +56,8 @@ student $ kubectl scale deployment cats --replicas=3
 
 ## 사용된 파드 맻 서비스 제거
 
+실습에서 사용된 파드와 서비스를 제거합니다. 
+
 ```
 kubectl delete services cats
 student $ kubectl delete deployment cats

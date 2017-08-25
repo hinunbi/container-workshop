@@ -205,8 +205,8 @@ NAME      STATUS     AGE       VERSION
 teacher   NotReady   6m        v1.7.3
 ```
 
-## 로컬 시스템을 Kubernetes 애플리케이션 노드로 전환
-아래 명령을 실행해 로컬 시스템이 Kubernetes 파드 실행 노드가 되게 전환합니다. 
+## 로컬 시스템을 Kubernetes 워커 노드로 전환
+아래 명령을 실행해 로컬 시스템이 Kubernetes 파드 워커 노드가 되게 전환합니다. 
 ```
 student $ kubectl taint nodes --all node-role.kubernetes.io/master-
 student $ kubectl get nodes
