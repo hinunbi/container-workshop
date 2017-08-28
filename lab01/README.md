@@ -65,9 +65,8 @@ root $ gedit /etc/hosts
 
 ## 실습 사용자 생성
 
-root 계정으로 워크샵 실습 사용자 계정 **student** 을 생성합니다. 
-워크샵에서 사용하는 사용자 패스워드는 **student** 입니다. 호스트 이름과 혼동하시지 않아야 합니다.
-호스트 이름은 사용자 패스워드에 자리 번호를 추가한 정보입니다. 
+실습에 제공된 아마존 VM 에는 이미 student 계정이 생성되어 있습니다. root 계정으로 워크샵 실습 사용자 계정 **student** 을 생성합니다. 
+워크샵에서 사용하는 사용자 패스워드는 **student** 입니다. 
 
 ```
 root $ useradd -m -s /bin/bash student
@@ -76,6 +75,8 @@ root $ usermod -aG wheel student
 ``` 
 
 ## 실습 사용자 sudo 사용 설정
+
+실습에 제공된 아마존 VM 에는 이미 student 계정의 sudo 사용이 설정되어 있습니다. 
 실습 사용자 student 계정이 패스워드 없이 sudo 를 사용할 수 있게 설정을 추가합니다.
 
 ```
@@ -92,8 +93,9 @@ student         ALL=(ALL)       NOPASSWD: ALL
 
 ## 유틸리티 설치
 
+실습에 제공된 아마존 VM 에는 jq를 제외한 유틸리티들이 이미 설치되어 있습니다.
 원할한 실습 진행을 위해 몇몇 유틸리티를 설치합니다.
-실습에서 제공된 아마존 VM 에는 이미 설치되어 있습니다.
+
 
 ```
 root $ yum install -y wget git bash-completion telnet 
