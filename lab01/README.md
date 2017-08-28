@@ -3,7 +3,7 @@ Lab 01 - 사전 준비
 
 이 워크샵은 전체 실습을 위한 사전 준비 환경을 안내합니다. 
 
-* 이 문서는 Red Hat Enterprise Linux 를 기반으로 작성됐습니다.
+* 이 문서는 Red Hat Enterprise Linux 7.3 을 기반으로 작성됐습니다.
 * 반드시 명령 실행은 프롬프트 앞에 *표시된 계정* 으로 명령을 실행합니다.  
 
 
@@ -18,6 +18,8 @@ Lab 01 - 사전 준비
 
     [https://www.realvnc.com/en/connect/download/vnc/](https://www.realvnc.com/en/connect/download/vnc/)
 
+* 워크샵에서 제공하는 아마존 VM ssh 접속을 위한 키 파일입니다. 아마존 VM 접속 정보와 키 파일은 워크샵 현장에서 알려드립니다.   
+
     [container-workshop-20170824](./container-workshop-20170824.pem)
    
     [container-workshop-20170824-singapore](./container-workshop-20170824-singapore.pem)
@@ -27,18 +29,22 @@ Lab 01 - 사전 준비
     [container-workshop-20170824-tokyo](./container-workshop-20170824-tokyo.pem)
 
 
+```
+# ssh -i [키 파일 경로] ec2-user@[아마존 VM 공개 DNS 이름/IP 주소]
+$ ssh -i /path/my-key-pair.pem ec2-user@ec2-198-51-100-1.compute-1.amazonaws.com
+```
 
 ## 호스트 이름 설정
 
-실습 시스템의 호스트 이름 **student** 뒤에 실습 참석자의 번호를 입력합니다. 
+실습 시스템의 호스트 이름 **workshop** 뒤에 실습 참석자의 번호를 입력합니다. 
 아래 예에서는 01 을 추가했습니다. 
 실습 참석자는 각자에게 부여된 번호를 입력합니다. 
 호스트 이름을 반영하기 위해서는 로그 아웃 후 다시 로그인 합니다.
-로그인 후 쉡이 호스트 이름이 정상적으로 표시 되지 않는 경우 시스템을 재시작 합니다.
+재로그인 후 쉘 프롬프트에 호스트 이름이 정상적으로 수정되어 표시 되지 않는 경우 시스템을 재시작 합니다.
 
 ```
 ec2-user $ sudo su -
-root $ hostnamectl set-hostname student01
+root $ hostnamectl set-hostname workshop01
 root $ hostnamectl status
 root $ exit
 ```
@@ -86,7 +92,8 @@ student         ALL=(ALL)       NOPASSWD: ALL
 
 ## 유틸리티 설치
 
-원할한 실습 진행을 위해 몇몇 유틸리티를 설치합니다
+원할한 실습 진행을 위해 몇몇 유틸리티를 설치합니다.
+실습에서 제공된 아마존 VM 에는 이미 설치되어 있습니다.
 
 ```
 root $ yum install -y wget git bash-completion telnet 
