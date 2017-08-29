@@ -59,7 +59,7 @@ root $ gedit /etc/hosts
 /etc/hosts :
 ```
 ...
-172.31.6.241 student01
+172.31.6.241 workshop01
 ...
 ```
 
