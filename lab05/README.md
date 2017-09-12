@@ -97,7 +97,7 @@ root $ kubeadm init --pod-network-cidr=192.168.0.0/16
 ```
 
 ### kubeadm 설정 파일 수정
-kubeadm 최토 실행 후 아래와 같이 kubeadm 설정 파일에서 **--cgroup-driver=cgroupfs** 로 오류를 수정합니다.
+kubeadm 최초 실행 후 아래와 같이 kubeadm 설정 파일에서 **--cgroup-driver=cgroupfs** 로 오류를 수정합니다.
 
 이슈 참조) [https://github.com/kubernetes/kubernetes/issues/43805](https://github.com/kubernetes/kubernetes/issues/43805)
 
