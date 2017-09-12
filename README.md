@@ -20,7 +20,7 @@ Red Hat Container Workshop
    * [lab03 - Docker 설치 및 컨테이너 실행](lab03/README.md)
    * [lab04 - Docker 환경에서 컨테이너 이미지 빌드와 실행](lab04/README.md)
    * [lab05 - Kubernetes 설치](lab05/README.md) 
-   * [lab06 - Kubernets 환경에서 애플리케이션 배포와 실행](lab06/README.md)
+   * [lab06 - Kubernetes 환경에서 애플리케이션 배포와 실행](lab06/README.md)
 
 ## 컨테이너 애플리케이션 구성도
 
