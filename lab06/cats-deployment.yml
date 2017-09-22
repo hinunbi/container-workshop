@@ -16,7 +16,7 @@ spec:
         name: cats
         env:
         - name: ACTIVEMQ_BROKER_URL
-          value: "ssl://broker-amq-tcp-ssl-container-workshop.apps.13.124.168.242.nip.io:443"
+          value: "ssl://broker-amq-tcp-ssl-container-workshop.apps.52.78.204.231.nip.io:443"
         ports:
         - containerPort: 8080
           name: cats
