@@ -20,14 +20,8 @@ Lab 01 - 사전 준비
 
 * 워크샵에서 제공하는 아마존 VM ssh 접속을 위한 키 파일입니다. 아마존 VM 접속 정보와 키 파일은 워크샵 현장에서 알려드립니다.   
 
-    [container-workshop-20170824](./container-workshop-20170824.pem)
+    [container-workshop-20170923-tokyo](./guest-tokyo.pem)
    
-    [container-workshop-20170824-singapore](./container-workshop-20170824-singapore.pem)
-   
-    [container-workshop-20170824-sysdney](./container-workshop-20170824-sydney.pem)
-   
-    [container-workshop-20170824-tokyo](./container-workshop-20170824-tokyo.pem)
-
 
 ```
 # ssh -i [키 파일 경로] ec2-user@[아마존 VM 공개 DNS 이름/IP 주소]
