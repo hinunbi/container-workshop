@@ -7,6 +7,18 @@ Lab 01 - 사전 준비
 * 반드시 명령 실행은 프롬프트 앞에 *표시된 계정* 으로 명령을 실행합니다.  
 
 
+## 아마존 인스턴스
+
+실습에서 사용하는 AMI 이미지 식별자와 인스턴스 생성 정보는 다음과 같습니다. 
+실습 참석자는 아래 정보를 참조해 자신의 아마존 계정에 실습용 인스턴스를 생성합니다.  
+
+* AMI(Seoul Region) : ami-a46ab2ca (container-workshop-base-rhel-7.3-1)
+* AMI(Tokyo Region) : ami-ea61a88c (container-workshop-base-rhel-7.3-1)
+* Instance Type : t2.large (Cores 2, Memory 8G)
+* EBS : 20G bytes
+* Inbound port : 22, 80, 8080, 5901, 443, 8443
+
+
 ## VNC 클라이언트
 
 * 실습은 아마존 인스턴스에서 진행됩니다. 
