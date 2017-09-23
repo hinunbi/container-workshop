@@ -10,4 +10,3 @@ services:
       ACTIVEMQ_SERVICE_PORT: 61616
       MYSQL_SERVICE_HOST: ${HOST_IP}
       MYSQL_SERVICE_PORT: 3306
-      _JAVA_OPTIONS=-Djava.net.preferIPv4Stack: true
